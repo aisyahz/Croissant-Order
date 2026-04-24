@@ -247,10 +247,14 @@ export default function App() {
             className="relative"
           >
             <div className="absolute -inset-4 bg-bakery-accent/5 rounded-[40px] blur-2xl -z-10" />
-            <img 
-              src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1000&auto=format&fit=crop" 
-              alt="Premium Croissants"
-              className="w-full h-auto rounded-[40px] shadow-2xl object-cover"
+            <video
+              src="https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/Croissants_dusted_with_202604241434.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="w-full h-[420px] md:h-[560px] rounded-[40px] shadow-2xl object-cover"
             />
             {/* Floating Tag */}
             <motion.div 
