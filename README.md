@@ -1,20 +1,93 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img width="1200" height="475" alt="TEPI.CO Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+
+# TEPI.CO | Premium Mini Croissants
+**Drizzle sendiri, lagi fresh & tak soggy! 🥐**
+
+[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://ai.studio/apps/0d3daa1d-19f8-48ee-9554-7179ab70e869)
+[![Made with React](https://img.shields.io/badge/made%20with-React-blue.svg)](https://react.dev/)
+[![Styled with Tailwind](https://img.shields.io/badge/styled%20with-Tailwind-38B2AC.svg)](https://tailwindcss.com/)
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## ✨ Overview
 
-View your app in AI Studio: https://ai.studio/apps/0d3daa1d-19f8-48ee-9554-7179ab70e869
+TEPI.CO is a modern, premium bakery website designed for a specialized mini-croissant business based in Bangsar, Malaysia. The platform emphasizes the unique **DIY Chocolate Drizzle** experience—ensuring every bite remains perfectly flaky and fresh.
 
-## Run Locally
+Built with a focus on high-end aesthetics, smooth interactions, and a seamless mobile ordering experience via WhatsApp integration.
 
-**Prerequisites:**  Node.js
+## 🥐 Signature Offerings
 
+- **DIY Chocolate Drizzle Set:** Our best-seller. 10pcs mini croissants with separate premium chocolate for the ultimate customized experience.
+- **Classic Mini Croissants:** Simple, buttery, and flaky perfection.
+- **Double Chocolate Set:** For the true chocolate lovers.
+- **Event & Office Packages:** Specialized bulk sets (60-100pcs) tailored for meetings, tea breaks, and special occasions.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🌟 Key Features
+
+- **Premium Visual Language:** A sophisticated palette of Bakery Cream, Chocolate, and Tan.
+- **Responsive & Interactive:** Smooth animations using `framer-motion` for an editorial feel.
+- **Muslim-Owned & Halal-Friendly:** Clear trust badges for Malaysian consumers.
+- **Seamless Ordering:** Integrated WhatsApp order form that pre-fills customer details for quick conversions.
+- **Educational Flow:** Dedicated "How It Works" and "Reheating Guide" sections to ensure product quality at home.
+
+## 🛠 Tech Stack
+
+- **Frontend:** React 19 + TypeScript
+- **Styling:** Tailwind CSS 4.0
+- **Animations:** Motion (Framer Motion)
+- **Icons:** Lucide React
+- **Build Tool:** Vite
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (Latest LTS recommended)
+- [npm](https://www.npmjs.com/)
+
+### Local Development
+
+1. **Clone the repository:**
+   ```bash
+   # (If applicable from GitHub)
+   git clone https://github.com/aisyahz/Croissant-Order.git
+   cd Croissant-Order
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment:**
+   Create a `.env.local` file at the root and add your Gemini API Key if using AI features:
+   ```env
+   GEMINI_API_KEY="your_api_key_here"
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   The app will be available at `http://localhost:3000`.
+
+## 📦 Deployment
+
+This project is optimized for deployment via **Google AI Studio** and **Cloud Run**. 
+
+To build for production:
+```bash
+npm run build
+```
+The static files will be generated in the `dist/` directory.
+
+---
+
+<div align="center">
+  <p>Made with Love in Bangsar, Malaysia 🇲🇾</p>
+  <p><i>"Setiap croissant dibuat khas untuk moment kecil yang bermakna."</i></p>
+</div>
