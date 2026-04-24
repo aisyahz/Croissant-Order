@@ -4,9 +4,11 @@
 # TEPI.CO | Premium Mini Croissants
 **Drizzle sendiri, lagi fresh & tak soggy! 🥐**
 
-[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://ai.studio/apps/0d3daa1d-19f8-48ee-9554-7179ab70e869)
+<br />
+
 [![Made with React](https://img.shields.io/badge/made%20with-React-blue.svg)](https://react.dev/)
 [![Styled with Tailwind](https://img.shields.io/badge/styled%20with-Tailwind-38B2AC.svg)](https://tailwindcss.com/)
+
 </div>
 
 ---
@@ -77,7 +79,7 @@ Built with a focus on high-end aesthetics, smooth interactions, and a seamless m
 
 ## 📦 Deployment
 
-This project is optimized for deployment via **Google AI Studio** and **Cloud Run**. 
+This project is optimized for deployment via modern cloud platforms like **Cloud Run**. 
 
 To build for production:
 ```bash
