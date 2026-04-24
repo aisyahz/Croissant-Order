@@ -679,7 +679,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-center pb-20 border-b border-bakery-tan">
              <div className="mb-12 md:mb-0 text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-                  <img src="https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/logo-tepico.png" alt="TEPI.CO" className="h-12 w-auto bg-white/50 rounded-lg p-1" />
+                 <img src="https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/logo.png" alt="TEPI.CO logo" className="h-10 w-auto object-contain" />
                   <span className="text-3xl font-display font-black tracking-widest text-bakery-chocolate">TEPI.CO</span>
                 </div>
                 <p className="max-w-xs text-bakery-chocolate/60">
