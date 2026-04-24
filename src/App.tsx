@@ -246,15 +246,17 @@ export default function App() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative"
           >
-            <div className="absolute -inset-4 bg-bakery-accent/5 rounded-[40px] blur-2xl -z-10" />
-             <video
+           <div className="relative w-full h-[420px] md:h-[520px] rounded-[40px] shadow-2xl overflow-hidden">
+              <video
                 src="https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/Croissants_dusted_with_202604241442.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="absolute top-1/2 left-1/2 h-full w-auto -translate-x-1/2 -translate-y-1/2 object-contain"
+                className="absolute top-1/2 left-1/2 w-auto h-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 object-cover"
               />
+              <div className="absolute inset-0 bg-black/10" />
+            </div>
             {/* Floating Tag */}
             <motion.div 
               animate={{ y: [0, -10, 0] }}
