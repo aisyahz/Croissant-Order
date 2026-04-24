@@ -32,7 +32,7 @@ const SIGNATURE_PRODUCTS = [
     description: "10 pcs mini croissant + 1 premium chocolate drizzle (separate cup). \"Drizzle sendiri, tak soggy\"",
     price: 28,
     items: "10 pcs + chocolate cup",
-    image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd?q=80&w=600&auto=format&fit=crop",
+    image: "https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/box2.png",
     isStar: true,
   },
   {
@@ -41,7 +41,7 @@ const SIGNATURE_PRODUCTS = [
     description: "10 pcs mini croissant (plain, buttery)",
     price: 22,
     items: "10 pcs",
-    image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600&auto=format&fit=crop",
+    image: "https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/box1.png",
     isStar: false,
   },
   {
@@ -50,7 +50,7 @@ const SIGNATURE_PRODUCTS = [
     description: "10 pcs mini croissant + extra chocolate dip",
     price: 32,
     items: "10 pcs",
-    image: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=600&auto=format&fit=crop",
+    image: "https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/box3.png",
     isStar: false,
   }
 ];
@@ -60,19 +60,21 @@ const PACKAGES = [
     name: "Frozen Croissant",
     quantity: "10 pcs",
     price: 18,
+    description: "Unbaked, ready for airfryer/oven. No flavour selection. Best for home baking.",
     icon: <IceCream className="w-5 h-5" />,
   },
   {
     name: "Office Set",
-    quantity: "60 pcs (5 boxes)",
+    quantity: "60 pcs (6 boxes)",
     price: 130,
+    note: "Perfect for meetings & tea breaks",
     icon: <Clock className="w-5 h-5" />,
   },
   {
     name: "Big Event Set",
-    quantity: "96 pcs (8 boxes)",
+    quantity: "100 pcs (10 boxes)",
     price: 200,
-    note: "Include delivery & mix flavour allowed",
+    note: "Includes delivery & premium handling",
     icon: <Truck className="w-5 h-5" />,
     bestDeal: true
   }
@@ -80,9 +82,13 @@ const PACKAGES = [
 
 const FEATURES = [
   { title: "Buttery & Flaky", icon: <Flame className="w-6 h-6" />, desc: "Pure butter perfection" },
-  { title: "Premium Chocolate", icon: <Star className="w-6 h-6" />, desc: "High quality drizzle" },
+  { title: "Muslim-Owned", icon: <Heart className="w-6 h-6" />, desc: "Made with love & care" },
   { title: "Easy to Enjoy", icon: <Zap className="w-6 h-6" />, desc: "Bite-sized happiness" },
-  { title: "Made with Love", icon: <Heart className="w-6 h-6" />, desc: "Freshly baked daily" },
+  { title: "Halal Ingredients", icon: <Star className="w-6 h-6" />, desc: "Quality guaranteed" },
+];
+
+const OCCASIONS = [
+  "Jamuan Office", "Majlis Kecil", "Potluck", "Birthday", "Meeting Treats"
 ];
 
 const STEPS = [
@@ -108,7 +114,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#" className="flex items-center space-x-2">
-          <img src="/logo-tepico.png" alt="TEPI.CO" className="h-10 w-auto" />
+          <img src="https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/logo-tepico.png" alt="TEPI.CO" className="h-10 w-auto" />
           <span className="text-2xl font-display font-bold tracking-widest text-bakery-chocolate">TEPI.CO</span>
         </a>
 
@@ -118,7 +124,7 @@ const Navbar = () => {
             <a 
               key={item} 
               href={`#${item.toLowerCase().replace(/ /g, '-')}`} 
-              className="text-sm font-medium hover:text-bakery-brown transition-colors"
+              className="text-sm font-medium hover:text-bakery-accent transition-colors"
             >
               {item}
             </a>
@@ -213,9 +219,16 @@ export default function App() {
             <div className="tagline-ribbon">
               DRIZZLE SENDIRI, LAGI FRESH & TAK SOGGY
             </div>
-            <h1 className="text-6xl md:text-8xl font-display font-semibold leading-[1.1] text-[#2C1E14]">
+            
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="trust-badge">Muslim-Owned</span>
+              <span className="trust-badge">Halal-Friendly Ingredients</span>
+              <span className="trust-badge">Pre-Order 3 Days</span>
+            </div>
+
+            <h1 className="text-6xl md:text-8xl font-display font-semibold leading-[1.1] text-bakery-chocolate">
               Mini Croissant, <br />
-              <span className="italic text-bakery-accent underline decoration-bakery-tan underline-offset-12">Freshly Baked</span> <br />
+              <span className="italic text-bakery-accent underline decoration-bakery-tan/40 underline-offset-12">Freshly Baked</span> <br />
               Happiness 🥐
             </h1>
             <p className="text-lg md:text-xl text-bakery-chocolate/70 max-w-lg leading-relaxed">
@@ -281,14 +294,21 @@ export default function App() {
       {/* --- Signature Products --- */}
       <section id="menu" className="py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 space-y-4">
+          <div className="text-center mb-16 space-y-6">
             <h2 className="text-4xl md:text-5xl font-display font-bold">Signature Series</h2>
-            <p className="text-bakery-chocolate/60 max-w-2xl mx-auto italic">
-              Carefully crafted packages for the ultimate croissant experience.
+            <p className="text-bakery-chocolate/70 max-w-2xl mx-auto font-medium leading-relaxed">
+              Premium mini croissant sets. Homemade by order, taking pride in every flaky layer.
             </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {OCCASIONS.map((tag) => (
+                <span key={tag} className="px-4 py-1.5 bg-bakery-ribbon text-bakery-accent text-[11px] font-black uppercase tracking-widest rounded-full border border-bakery-accent/10">
+                  # {tag}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-12">
             {SIGNATURE_PRODUCTS.map((product) => (
               <motion.div 
                 key={product.id}
@@ -296,29 +316,33 @@ export default function App() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={itemVariants}
-                className="product-card group flex flex-col h-full"
+                className="product-card group flex flex-col h-full ring-1 ring-bakery-tan/5"
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img 
                     src={product.image} 
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
                   {product.isStar && (
-                    <div className="absolute top-4 right-4 bg-bakery-accent text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 shadow-lg">
-                      <Star className="w-3 h-3 fill-white" /> POPULAR
+                    <div className="absolute top-4 right-4 bg-bakery-accent text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 shadow-xl ring-2 ring-white/20">
+                      <Star className="w-3 h-3 fill-white" /> BEST SELLER
                     </div>
                   )}
+                  <div className="absolute inset-0 bg-bakery-chocolate/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <div className="p-8 flex flex-col flex-grow bg-white">
+                <div className="p-10 flex flex-col flex-grow bg-white">
                   <div className="flex-grow">
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-bakery-accent transition-colors">{product.name}</h3>
-                    <p className="text-bakery-chocolate/60 text-sm leading-relaxed mb-4">{product.description}</p>
-                    <p className="text-xs font-bold text-bakery-accent uppercase tracking-wider mb-6">{product.items}</p>
+                    <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-bakery-accent transition-colors">{product.name}</h3>
+                    <p className="text-bakery-chocolate/70 text-sm font-medium leading-relaxed mb-6">{product.description}</p>
+                    <div className="inline-block px-3 py-1 bg-bakery-ribbon rounded-lg text-xs font-bold text-bakery-accent uppercase tracking-wider mb-8">
+                       {product.items}
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between pt-6 border-t border-bakery-tan/10">
-                    <div className="text-2xl font-black">RM{product.price}</div>
-                    <a href="#order" className="p-3 bg-bakery-cream rounded-full hover:bg-bakery-accent hover:text-white transition-colors">
+                  <div className="flex items-center justify-between pt-8 border-t border-bakery-tan/10">
+                    <div className="text-3xl font-black text-bakery-chocolate">RM{product.price}</div>
+                    <a href="#order" className="group/btn relative btn-primary !px-5 !py-3 bg-bakery-cream hover:!bg-bakery-accent text-bakery-chocolate hover:text-white transition-all shadow-none flex items-center gap-2">
+                      <span className="font-bold text-xs uppercase tracking-widest">Order</span>
                       <ShoppingBag className="w-5 h-5" />
                     </a>
                   </div>
@@ -330,30 +354,94 @@ export default function App() {
       </section>
 
       {/* --- Why Us Section --- */}
-      <section className="py-24 bg-bakery-chocolate text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl font-display font-bold">Why Choose Us?</h2>
-            <div className="space-y-6">
-              {[
-                "Freshly baked with premium ingredients every day",
-                "Unique DIY drizzle experience for that perfect crunch",
-                "Perfectly sized for treats, office, & special events",
-                "Premium artisan taste at an affordable price point"
-              ].map((text, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="mt-1 flex-shrink-0 w-6 h-6 bg-bakery-accent rounded-full flex items-center justify-center">
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
-                  <p className="text-lg text-white font-bold leading-relaxed">{text}</p>
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-12"
+            >
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-3 text-bakery-accent font-black uppercase tracking-[0.2em] text-xs">
+                  <div className="w-8 h-[2px] bg-bakery-accent" />
+                  Kenapa TEPI.CO?
                 </div>
-              ))}
+                <h2 className="text-5xl md:text-6xl font-display font-bold text-bakery-chocolate leading-[1.1]">
+                  Crafted for <br />
+                  <span className="italic text-bakery-accent">Your Moments</span>
+                </h2>
+                <p className="text-lg text-bakery-chocolate/70 leading-relaxed font-medium max-w-xl">
+                  Setiap croissant dibuat khas untuk moment kecil yang bermakna — dari jamuan office hingga majlis bersama orang tersayang.
+                </p>
+              </div>
+
+              <div className="space-y-10">
+                {[
+                  { title: "Muslim-Owned", desc: "Disediakan oleh owner Muslim, dengan penjagaan kebersihan & kepercayaan.", icon: "🕌" },
+                  { title: "Halal-Friendly Ingredients", desc: "Menggunakan bahan premium yang sesuai untuk dinikmati semua.", icon: "🍫" },
+                  { title: "Fresh by Pre-Order", desc: "Dibakar khas untuk anda — tiada stock lama.", icon: "🔥" },
+                  { title: "Perfect for Malaysian Occasions", desc: "Jamuan office, majlis kecil, potluck & event.", icon: "🎉" }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-6 group">
+                    <div className="text-3xl filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                      {item.icon}
+                    </div>
+                    <div className="space-y-1">
+                      <h3 className="text-xl font-bold text-bakery-chocolate flex items-center gap-2">
+                        {item.title}
+                        <div className="w-0 group-hover:w-8 h-[1px] bg-bakery-tan transition-all duration-500" />
+                      </h3>
+                      <p className="text-bakery-chocolate/60 font-medium leading-relaxed max-w-md italic">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-6 flex flex-wrap gap-4 text-[10px] font-black uppercase tracking-widest text-bakery-chocolate/30">
+                <span>Muslim-owned</span>
+                <span className="text-bakery-tan">•</span>
+                <span>Halal-friendly</span>
+                <span className="text-bakery-tan">•</span>
+                <span>Freshly baked</span>
+                <span className="text-bakery-tan">•</span>
+                <span>Bangsar-based</span>
+              </div>
+            </motion.div>
+
+            <div className="relative">
+              <div className="relative z-10 grid grid-cols-2 gap-6">
+                <motion.div 
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-6"
+                >
+                  <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=600&auto=format&fit=crop" className="rounded-[40px] shadow-heavy" alt="Bakery Process" />
+                  <div className="bg-bakery-accent p-10 rounded-[40px] text-center shadow-xl transform hover:scale-105 transition-transform">
+                    <p className="text-4xl font-display font-black text-white mb-1">100%</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">Homemade</p>
+                  </div>
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, y: -40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-6 pt-16"
+                >
+                  <div className="bg-bakery-tan p-10 rounded-[40px] text-center shadow-xl transform hover:scale-105 transition-transform">
+                    <p className="text-3xl font-display font-black text-bakery-chocolate mb-1 leading-none">Bangsar</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-bakery-chocolate/50 pt-2">Based locally</p>
+                  </div>
+                  <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" className="rounded-[40px] shadow-heavy" alt="Freshly Baked" />
+                </motion.div>
+              </div>
+              
+              {/* Decorative blobs */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-bakery-ribbon/50 blur-[120px] -z-10 rounded-full" />
             </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-             <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=400&auto=format&fit=crop" className="rounded-2xl transform translate-y-8" alt="Bakery" />
-             <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop" className="rounded-2xl" alt="Bakery" />
           </div>
         </div>
       </section>
@@ -410,31 +498,38 @@ export default function App() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className={`flex flex-col md:flex-row items-center justify-between p-8 rounded-[30px] border transition-all ${pkg.bestDeal ? 'bg-bakery-brown text-white border-bakery-chocolate shadow-xl' : 'bg-white border-bakery-tan hover:border-bakery-brown shadow-sm'}`}
+                className={`flex flex-col md:flex-row items-center justify-between p-8 rounded-[40px] border transition-all ${pkg.bestDeal ? 'bg-bakery-accent text-white border-bakery-chocolate shadow-xl' : 'bg-white border-bakery-tan hover:border-bakery-accent shadow-sm'}`}
               >
                 <div className="flex items-center gap-6 mb-4 md:mb-0">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${pkg.bestDeal ? 'bg-white text-bakery-brown' : 'bg-bakery-beige text-bakery-brown'}`}>
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${pkg.bestDeal ? 'bg-white text-bakery-accent' : 'bg-bakery-ribbon text-bakery-accent shadow-sm'}`}>
                     {pkg.icon}
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold flex items-center gap-2">
-                       {pkg.name} {pkg.bestDeal && <span className="text-[10px] bg-white text-bakery-accent px-2 py-0.5 rounded-full uppercase tracking-widest font-black">Best Deal</span>}
+                  <div className="text-left">
+                    <h3 className={`text-xl font-bold flex items-center gap-2 ${pkg.bestDeal ? 'text-white' : 'text-bakery-chocolate'}`}>
+                       {pkg.name} {pkg.bestDeal && <span className="text-[10px] bg-white text-bakery-accent px-2 py-0.5 rounded-full uppercase tracking-widest font-black ring-1 ring-bakery-accent/10">Best Deal</span>}
                     </h3>
-                    <p className={`text-sm ${pkg.bestDeal ? 'text-white' : 'text-bakery-chocolate/60'}`}>{pkg.quantity}</p>
-                    {pkg.note && <p className="text-xs mt-1 italic opacity-100">{pkg.note}</p>}
+                    <p className={`text-sm font-semibold ${pkg.bestDeal ? 'text-white/90' : 'text-bakery-chocolate/70'}`}>{pkg.quantity}</p>
+                    {pkg.description && <p className={`text-xs mt-1 font-medium max-w-xs ${pkg.bestDeal ? 'text-white/80' : 'text-bakery-chocolate/50'}`}>{pkg.description}</p>}
+                    {pkg.note && <p className={`text-xs mt-1 font-bold italic ${pkg.bestDeal ? 'text-white' : 'text-bakery-accent'}`}>{pkg.note}</p>}
                   </div>
                 </div>
                 <div className="flex items-center gap-8">
-                  <div className="text-2xl font-black">RM{pkg.price}</div>
+                  <div className={`text-2xl font-black ${pkg.bestDeal ? 'text-white' : 'text-bakery-chocolate'}`}>RM{pkg.price}</div>
                   <a 
                     href="#order" 
-                    className={`px-6 py-2 rounded-full font-bold transition-all ${pkg.bestDeal ? 'bg-white text-bakery-brown hover:bg-bakery-beige' : 'bg-bakery-brown text-white hover:bg-bakery-chocolate'}`}
+                    className={`px-8 py-2.5 rounded-full font-bold transition-all ${pkg.bestDeal ? 'bg-white text-bakery-accent hover:bg-bakery-ribbon' : 'bg-bakery-accent text-white hover:bg-bakery-chocolate shadow-lg shadow-bakery-accent/20'}`}
                   >
                     Select
                   </a>
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm font-bold text-bakery-accent bg-bakery-ribbon inline-block px-6 py-2 rounded-full border border-bakery-accent/10 shadow-sm">
+              ✨ Mix flavour available for baked croissant boxes only.
+            </p>
           </div>
         </div>
       </section>
@@ -469,21 +564,32 @@ export default function App() {
               </div>
             </div>
 
-            <div className="p-8 bg-bakery-chocolate text-white rounded-[40px] shadow-lg relative overflow-hidden border border-white/10">
-               <div className="relative z-10">
-                  <h3 className="text-2xl font-display font-bold mb-4 text-white">Storage & Reheating</h3>
-                  <div className="space-y-3 mb-8">
-                    <p className="font-bold text-white text-lg">✨ Best enjoyed same day.</p>
-                    <p className="text-white font-semibold bg-white/10 p-3 rounded-xl border border-white/10">Reheat 3–5 min in oven/airfryer for crispier texture.</p>
+            <div className="p-8 bg-bakery-chocolate text-white rounded-[40px] shadow-2xl relative overflow-hidden border-2 border-white/5">
+               <div className="relative z-10 space-y-6">
+                  <div>
+                    <h3 className="text-2xl font-display font-bold mb-4 text-white">Storage & Reheating</h3>
+                    <div className="space-y-4">
+                      <p className="font-black text-white text-xl flex items-center gap-2">
+                        <Star className="w-5 h-5 fill-white" /> Best enjoyed same day.
+                      </p>
+                      <div className="text-white font-bold bg-white/10 p-4 rounded-2xl border border-white/10 backdrop-blur-sm leading-relaxed">
+                        Reheat <span className="text-bakery-tan underline">3–5 min</span> in oven/airfryer for the perfect crispier texture.
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-display font-bold mb-4 text-white">Want something custom?</h3>
-                  <p className="mb-6 text-white font-bold leading-relaxed">Reach out to us for events, weddings or bulk office orders. We provide custom packaging and tag designs!</p>
-                  <div className="flex gap-4">
-                    <a href="https://wa.me/60136648159" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"><Instagram /></a>
-                    <a href="https://wa.me/60136648159" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"><Facebook /></a>
+
+                  <div>
+                    <h3 className="text-xl font-display font-bold mb-4 text-white">Event & Custom Orders</h3>
+                    <p className="mb-6 text-white/90 font-semibold leading-relaxed">
+                      Plan your <span className="text-bakery-tan">Majlis Kecil</span>, office potluck, or meeting treats with us. Custom packaging available for bulk orders!
+                    </p>
+                    <div className="flex gap-4">
+                      <a href="#" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors shadow-lg shadow-black/20"><Instagram /></a>
+                      <a href="#" className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors shadow-lg shadow-black/20"><Facebook /></a>
+                    </div>
                   </div>
                </div>
-               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-bakery-brown/20 rounded-full blur-3xl" />
+               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-bakery-accent/20 rounded-full blur-[100px]" />
             </div>
           </div>
 
@@ -507,7 +613,7 @@ export default function App() {
                   onChange={handleInputChange}
                   required
                   placeholder="e.g. Saisyah Zainal"
-                  className="w-full px-6 py-4 rounded-2xl bg-bakery-cream border border-bakery-tan focus:outline-none focus:ring-2 focus:ring-bakery-brown/20 focus:border-bakery-brown transition-all"
+                  className="w-full px-6 py-4 rounded-2xl bg-bakery-cream border border-bakery-tan focus:outline-none focus:ring-2 focus:ring-bakery-accent/20 focus:border-bakery-accent transition-all"
                 />
               </div>
 
@@ -520,7 +626,7 @@ export default function App() {
                   onChange={handleInputChange}
                   required
                   placeholder="e.g. 1 DIY Set + 1 Classic"
-                  className="w-full px-6 py-4 rounded-2xl bg-bakery-cream border border-bakery-tan focus:outline-none focus:ring-2 focus:ring-bakery-brown/20 focus:border-bakery-brown transition-all"
+                  className="w-full px-6 py-4 rounded-2xl bg-bakery-cream border border-bakery-tan focus:outline-none focus:ring-2 focus:ring-bakery-accent/20 focus:border-bakery-accent transition-all"
                 />
               </div>
 
@@ -534,7 +640,7 @@ export default function App() {
                     onChange={handleInputChange}
                     required
                     placeholder="DD/MM/YYYY"
-                    className="w-full px-6 py-4 rounded-2xl bg-bakery-cream border border-bakery-tan focus:outline-none focus:ring-2 focus:ring-bakery-brown/20 focus:border-bakery-brown transition-all"
+                    className="w-full px-6 py-4 rounded-2xl bg-bakery-cream border border-bakery-tan focus:outline-none focus:ring-2 focus:ring-bakery-accent/20 focus:border-bakery-accent transition-all"
                   />
                 </div>
                 <div className="space-y-2">
@@ -546,7 +652,7 @@ export default function App() {
                     onChange={handleInputChange}
                     required
                     placeholder="e.g. Bangsar South"
-                    className="w-full px-6 py-4 rounded-2xl bg-bakery-cream border border-bakery-tan focus:outline-none focus:ring-2 focus:ring-bakery-brown/20 focus:border-bakery-brown transition-all"
+                    className="w-full px-6 py-4 rounded-2xl bg-bakery-cream border border-bakery-tan focus:outline-none focus:ring-2 focus:ring-bakery-accent/20 focus:border-bakery-accent transition-all"
                   />
                 </div>
               </div>
@@ -573,7 +679,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-center pb-20 border-b border-bakery-tan">
              <div className="mb-12 md:mb-0 text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-                  <img src="/logo-tepico.png" alt="TEPI.CO" className="h-12 w-auto bg-white/50 rounded-lg p-1" />
+                  <img src="https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/logo-tepico.png" alt="TEPI.CO" className="h-12 w-auto bg-white/50 rounded-lg p-1" />
                   <span className="text-3xl font-display font-black tracking-widest text-bakery-chocolate">TEPI.CO</span>
                 </div>
                 <p className="max-w-xs text-bakery-chocolate/60">
@@ -586,17 +692,17 @@ export default function App() {
                 <div>
                    <h4 className="font-bold uppercase tracking-widest text-xs mb-6 opacity-40">Shop</h4>
                    <ul className="space-y-3 font-medium">
-                      <li><a href="#menu" className="hover:text-bakery-brown">Menu</a></li>
-                      <li><a href="#order" className="hover:text-bakery-brown">Order</a></li>
-                      <li><a href="#" className="hover:text-bakery-brown">Gifting</a></li>
+                      <li><a href="#menu" className="hover:text-bakery-accent">Menu</a></li>
+                      <li><a href="#order" className="hover:text-bakery-accent">Order</a></li>
+                      <li><a href="#" className="hover:text-bakery-accent">Gifting</a></li>
                    </ul>
                 </div>
                 <div>
                    <h4 className="font-bold uppercase tracking-widest text-xs mb-6 opacity-40">Support</h4>
                    <ul className="space-y-3 font-medium">
-                      <li><a href="#" className="hover:text-bakery-brown">Delivery Info</a></li>
-                      <li><a href="#" className="hover:text-bakery-brown">Terms</a></li>
-                      <li><a href="#" className="hover:text-bakery-brown">Privacy</a></li>
+                      <li><a href="#" className="hover:text-bakery-accent">Delivery Info</a></li>
+                      <li><a href="#" className="hover:text-bakery-accent">Terms</a></li>
+                      <li><a href="#" className="hover:text-bakery-accent">Privacy</a></li>
                    </ul>
                 </div>
                 <div className="col-span-2 sm:col-span-1">
