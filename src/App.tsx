@@ -114,7 +114,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#" className="flex items-center space-x-2">
-          <img src="https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/logo-tepico.png" alt="TEPI.CO" className="h-10 w-auto" />
+          <img src="https://raw.githubusercontent.com/aisyahz/Croissant-Order/main/public/logo.png" alt="TEPI.CO" className="h-10 w-auto" />
           <span className="text-2xl font-display font-bold tracking-widest text-bakery-chocolate">TEPI.CO</span>
         </a>
 
